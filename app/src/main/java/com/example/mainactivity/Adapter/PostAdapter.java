@@ -80,8 +80,8 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.PostViewHolde
         String date  = DateFormat.format("MM/dd/yyyy" , new Date(milliseconds)).toString();
         holder.setPostDate(date);
 
-        String image = usersList.get(position).getImage();
-        String username = usersList.get(position).getName();
+        String image = users.get(position).getImage();
+        String username = users.get(position).getName();
 
 
         holder.setProfilePic(image);
