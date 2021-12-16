@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.mainactivity.CommentsActivity;
 import com.example.mainactivity.Model.Post;
+import com.example.mainactivity.Model.Users;
 import com.example.mainactivity.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -46,6 +47,9 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.PostViewHolde
 
     private List<Post> mList;
     private List<User> usersList;
+    private List<Users> users;
+    private int position;
+
     private CommentsAdapter commentsAdapter;
     private Activity context;
     private FirebaseFirestore firestore;
@@ -68,7 +72,7 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.PostViewHolde
 
     @Override
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
-        Post post = mList.get(position);
+        Post post = mList.get(holder.getAdapterPosition(position));
         holder.setPostPic(post.getImage());
         holder.setPostCaption(post.getCaption());
 
@@ -228,6 +232,9 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.PostViewHolde
         public void setPostCaption(String caption){
             postCaption = mView.findViewById(R.id.caption_tv);
             postCaption.setText(caption);
+        }
+        public int getAdapterPosition(int position) {
+            return position;
         }
     }
 }
